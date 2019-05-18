@@ -2,11 +2,11 @@ CREATE DATABASE bamazon_db;
 
 USE bamazon_db; 
 
-CREATE products (
+CREATE TABLE products (
     id INT NOT NULL AUTO_INCREMENT,
     product_Name VARCHAR(100) NOT NULL, 
     department_name VARCHAR(100), 
-    price INTEGER(10), 
+    price DECIMAL(10, 2), 
     stock_quantity INTEGER(10), 
     PRIMARY KEY (id)
 ); 
@@ -41,3 +41,8 @@ VALUES ("Blanket", "Home", 69.99, 60);
 
 INSERT INTO products (product_Name, department_name, price, stock_quantity)
 VALUES ("Shorts", "Sports", 20.00, 89);
+
+
+/* How to UPDATE */ 
+
+UPDATE products SET stock_quantity = 100 WHERE id = 1; 
