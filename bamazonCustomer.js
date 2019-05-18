@@ -1,8 +1,8 @@
 require("console.table")
 const inquirer = require("inquirer")
-var mysql = require("mysql");
+const mysql = require("mysql");
 
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
   host: "localhost",
 
   // Your port; if not 3306
