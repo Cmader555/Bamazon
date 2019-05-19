@@ -53,10 +53,10 @@ function menu() {
       lowInventory();
 
 
-    } else if (response.menu === "Add To Inventory"){
+    } else if (response.menu === "Add To Inventory") {
 
-      addInventory(); 
-      
+      addInventory();
+
     } else if (response.menu === "exit") {
 
       connection.end();
@@ -98,35 +98,72 @@ function lowInventory() {
 
 function addInventory() {
 
+  connection.query("SELECT * FROM products", function (err, data) {
+    if (err) throw err;
+
+    inquirer.prompt([
+
+      {
+        name: "id",
+        type: "input",
+        message: "What is the id of the item you want to add stock to?"
+      },
+      {
+        name: "quantity",
+        type: "input",
+        message: "How much stock do you want to add to this inventory slot?"
+      }
+
+    ]).then(function (answer) {
+
+      connection.query(`UPDATE products SET stock_quantity = ${(data[answer.id - 1].stock_quantity + parseInt(answer.quantity))} WHERE id = ${answer.id}`, function (err, response) {
+
+        if (err) throw err;
+        //console.log("it worked! ")
+
+        connection.query(`SELECT * FROM products WHERE id=${answer.id}`, function (err, response) {
+
+
+          console.table(response);
+          menu();
+        });
+      })
+    })
+  });
+};
+
+
+function newProduct() {
+
   inquirer.prompt([
 
     {
-      name: "id",
+      name: "product",
       type: "input",
-      message: "What is the id of the item you want to add stock to?"
+      message: "What is the name of the product you want to add?"
+    },
+    {
+      name: "department",
+      type: "input",
+      message: "What department do you want this new product to be in?"
+    },
+    {
+      name: "price",
+      type: "input",
+      message: "What do you want the price of the new item to be?"
     },
     {
       name: "quantity",
       type: "input",
-      message: "How much stock do you want to add to this inventory slot?"
+      message: "What do you want the stock quantity of the new item to be?"
     }
-
   ]).then(function (answer) {
 
-    connection.query(`UPDATE products SET stock_quantity =${data[answer.id-1].stock_quantity + answer.quantity} WHERE id =${answer.id}`, function(err){
+    connection.query(``)
 
-      if (err) throw err;
-
-      connection.query(`SELECT * FROM products WHERE id=${answer.id}`, function(err,data){
-
-        console.table(chalk.black.bgGreen(data));
-        menu();   
-      }); 
-
-    })
 
   })
 
 
 
-}; 
+}
