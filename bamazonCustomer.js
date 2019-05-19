@@ -19,13 +19,13 @@ let connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId + "\n");
-  display();
+
   runSearch();
 });
 
 
 function runSearch() {
-  
+
   inquirer
     .prompt({
       name: "action",
@@ -39,6 +39,7 @@ function runSearch() {
     .then(function (answer) {
       switch (answer.action) {
         case "Buy a product!":
+          display();
           purchase();
           break;
 
@@ -88,8 +89,8 @@ function purchase() {
         connection.query(`UPDATE products SET stock_quantity = ${(data[answer.id - 1].stock_quantity - answer.quantity)} WHERE id = ${answer.id};`, function (err) {
           if (err) throw err;
           //console.log(answer.id)
-         // console.log((data[answer.id - 1].stock_quantity - answer.quantity))
-          display();
+          // console.log((data[answer.id - 1].stock_quantity - answer.quantity))
+          //display();
           runSearch();
 
         });
@@ -97,7 +98,7 @@ function purchase() {
       } else {
 
         console.log("Sorry we don't have enough of that item in stock to complete the order! Please try again!");
-        display();
+        //display();
         runSearch();
       }
 
@@ -106,4 +107,7 @@ function purchase() {
 
   });
 };
+
+
+
 
