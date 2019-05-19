@@ -57,6 +57,9 @@ function menu() {
 
       addInventory();
 
+    } else if (response.menu === "Add New Product") {
+
+      newProduct();
     } else if (response.menu === "exit") {
 
       connection.end();
@@ -83,8 +86,8 @@ function lowInventory() {
 
   connection.query("SELECT * FROM bamazon_db.products WHERE stock_quantity <=5", function (err, data) {
     if (err) throw err;
-
-    if (data.stock_quantity === undefined) {
+    
+    if (data[0] === undefined) {
       console.log(chalk.black.bgGreen("There are no items that are low in Inventory! "));
       menu();
     } else {
@@ -159,11 +162,10 @@ function newProduct() {
     }
   ]).then(function (answer) {
 
-    connection.query(``)
-
-
+    connection.query(`INSERT INTO products (product_Name, department_name, price, stock_quantity) VALUES ("${answer.product}", "${answer.department}", ${parseInt(answer.price)}, ${parseInt(answer.quantity)})`, function (err) {
+      if (err) throw err;
+      displayProducts(); 
+      
+    })
   })
-
-
-
 }
