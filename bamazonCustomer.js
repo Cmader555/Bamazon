@@ -55,7 +55,7 @@ function runSearch() {
 
 function display() {
 
-  connection.query("SELECT * FROM products", function (err, data) {
+  connection.query("SELECT id,product_Name, department_name, price, stock_quantity FROM bamazon_db.products", function (err, data) {
     if (err) throw err;
     console.table(data);
 
