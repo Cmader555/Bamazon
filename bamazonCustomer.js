@@ -88,12 +88,17 @@ function purchase() {
         //console.log((data[answer.id - 1].stock_quantity - answer.quantity))
         connection.query(`UPDATE products SET stock_quantity = ${(data[answer.id - 1].stock_quantity - answer.quantity)} WHERE id = ${answer.id};`, function (err) {
           if (err) throw err;
-          //console.log(answer.id)
-          // console.log((data[answer.id - 1].stock_quantity - answer.quantity))
-          //display();
-          runSearch();
+          
+          
 
         });
+
+        connection.query(`UPDATE products SET product_sales = ${parseInt(answer.quantity) * parseInt(data[answer.id-1].price)} WHERE id = ${answer.id}`, function(err){
+          
+          if (err) throw err;
+          runSearch();
+
+        }); 
 
       } else {
 

@@ -46,3 +46,12 @@ VALUES ("Shorts", "Sports", 20.00, 89);
 /* How to UPDATE */ 
 
 UPDATE products SET stock_quantity = 100 WHERE id = 1; 
+
+
+CREATE TABLE departments (
+    department_id INT NOT NULL AUTO_INCREMENT,
+    department_name VARCHAR(100),
+    over_head_costs INTEGER(10), 
+    PRIMARY KEY (department_id)
+
+); 
