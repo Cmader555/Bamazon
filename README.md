@@ -2,12 +2,12 @@
 
 ### Project OverView 
 
-Bamazon is a terminal based amazon-like storefront. A user can act as a customer, or manager while interacting with bamazon. A user can can purchase products, view products, add inventory, add products, create new departments, and more. All of the data that users interact with are saved in a local MySQL database. 
+Bamazon is a terminal based amazon-like storefront. A user can act as a customer, or manager while interacting with bamazon. A user can purchase products, view products, add inventory, add products, create new departments, and more. All of the data that users interact with are saved in a local MySQL database. 
 
 
 ### How Bamazon Works
 
-Bamazon's functionality was created using javascript and it is executed via node. Inquirer and prompts are used to allow users to choose what tasks they want to perform, and it allows users to input information. All initial data, and any changes made to data are done through MYSQL. 
+Bamazon's functionality was created using javascript and it is executed via node. Inquirer and prompts are used to allow users to choose what tasks they want to perform and it allows users to input information. All initial data and any changes made to data are done through MYSQL. 
 
 
 ## Customer View
@@ -36,7 +36,7 @@ Bamazon's functionality was created using javascript and it is executed via node
 
 ### How Manager View Works
 
-* When a user invokes the manager node application, a menu for the manger is displayed. The manager can choose to manage low inventory, add inventory, add products, and view products by interacting with inquirer prompts in the command line. If the manager chooses to view products for sale, the manager will be viewing all of the product related data stored in it's associated sql database. If the manager chooses to view low inventory, then all of the products have a stock quantity less then 5 will be displayed. If there are no products with a quantity less then 5, then a message will be displayed letting the manager know so. If a manager wants to add inventory, they will be prompted to pick a product id, and the quantity of stock they want to add for said product. If a manager wants to add a new product, they will be prompted to input the product name, department name, product price, and stock quantity. All database changes are updated in the local MySQL database via connection queries. 
+* When a user invokes the manager node application, a menu for the manger is displayed. The manager can choose to manage low inventory, add inventory, add products, and view products by interacting with inquirer prompts in the command line. If the manager chooses to view products for sale, the manager will be viewing all of the product related data stored in it's associated SQL database. If the manager chooses to view low inventory, then all of the products have a stock quantity less than 5 will be displayed. If there are no products with a quantity less than 5, then a message will be displayed letting the manager know so. If a manager wants to add inventory, then they will be prompted to pick a product ID, and the quantity of stock they want to add for said product. If a manager wants to add a new product, they will be prompted to input the product name, department name, product price, and stock quantity. All database changes are updated in the local MySQL database via connection queries. 
 
 ### Example Photos
 
