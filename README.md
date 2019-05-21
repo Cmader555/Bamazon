@@ -19,13 +19,13 @@ Bamazon's functionality was created using javascript and it is executed via node
 ### Example Photos
 
 * Customer menu displayed after running node bamazonCustomer.js
-![command line concert](images/customermenu.png)
+![bamazon Customer](Images/customermenu.png)
 
-* Customer Product View 
-![command line concert](Images/customerproductview.png)
+* Customer product view, as well as prompt that asks user the id and quantity of what they want purchased. 
+![bamazon Customer](Images/Customerpurchase.png)
 
 * Warning letting a user know that they are attempting to order a quantity larger then the quantity available for purchase. 
-![command line concert](Images/CustomerNotEnoughStock.png)
+![bamazon Customer](Images/CustomerNotEnoughStock.png)
 
 
 # Manager View
