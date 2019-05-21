@@ -22,7 +22,7 @@ INSERT INTO products (product_Name, department_name, price, stock_quantity)
 VALUES ("Soccer Ball", "Sports", 15.99, 35);
 
 INSERT INTO products (product_Name, department_name, price, stock_quantity)
-VALUES ("Tooth Brush", "Toiletries", 04.99, 300);
+VALUES ("Tooth Brush", "Home", 04.99, 300);
 
 INSERT INTO products (product_Name, department_name, price, stock_quantity)
 VALUES ("Xbox", "Electronics", 329.99, 20);
@@ -51,7 +51,23 @@ UPDATE products SET stock_quantity = 100 WHERE id = 1;
 CREATE TABLE departments (
     department_id INT NOT NULL AUTO_INCREMENT,
     department_name VARCHAR(100),
-    over_head_costs INTEGER(10), 
+    over_head_costs INTEGER(10,2), 
     PRIMARY KEY (department_id)
 
 ); 
+
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Electronics", 50000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("sports", 35000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Home", 35000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("School", 45000);
+
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ("Home", 50000);
