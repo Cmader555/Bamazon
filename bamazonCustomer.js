@@ -1,6 +1,7 @@
 require("console.table")
 const inquirer = require("inquirer")
 const mysql = require("mysql");
+const chalk = require('chalk');
 
 let connection = mysql.createConnection({
   host: "localhost",
@@ -83,6 +84,8 @@ function purchase() {
       },
     ]).then(function (answer) {
 
+      let sales = parseInt(answer.quantity) * parseInt(data[answer.id-1].price); 
+
       if ((data[answer.id - 1].stock_quantity - answer.quantity) > 0) {
 
         //console.log((data[answer.id - 1].stock_quantity - answer.quantity))
@@ -93,9 +96,10 @@ function purchase() {
 
         });
 
-        connection.query(`UPDATE products SET product_sales = ${parseInt(answer.quantity) * parseInt(data[answer.id-1].price)} WHERE id = ${answer.id}`, function(err){
+        connection.query(`UPDATE products SET product_sales = ${sales + data[answer.id-1].product_sales} WHERE id = ${answer.id}`, function(err){
           
           if (err) throw err;
+          console.log(chalk.black.bgGreen(`Your total purchase cost is: ${sales} dollars!`)); 
           runSearch();
 
         }); 
